@@ -1,0 +1,64 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @key(fields: String!) on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
+type Student {
+  id: Float!
+  email: String!
+  name: String!
+  dob: String!
+  age: Float!
+}
+
+type Meta {
+  totalItems: Int!
+  itemCount: Int!
+  itemsPerPage: Int!
+  totalPages: Int!
+  currentPage: Int!
+}
+
+type PaginateResponse {
+  items: [Student!]!
+  meta: Meta!
+}
+
+type Query {
+  students: [Student!]!
+  paginateStudents(option: PaginateOptions!): PaginateResponse!
+  student(id: Int!): Student!
+}
+
+input PaginateOptions {
+  limit: Float!
+  page: Float!
+}
+
+type Mutation {
+  createStudent(createStudentInput: [CreateStudentInput!]!): [Student!]!
+  updateStudent(updateStudentInput: UpdateStudentInput!): Student!
+  removeStudent(id: Int!): Boolean!
+}
+
+input CreateStudentInput {
+  email: String!
+  name: String!
+  dob: String!
+}
+
+input UpdateStudentInput {
+  email: String
+  name: String
+  dob: String
+  id: Float!
+}
